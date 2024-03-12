@@ -13,7 +13,9 @@ module.exports = gql`
             track: String
             level: String   
         ): [Session],
-        sessionById(id:ID): Session
+        sessionById(id:ID): Session,
+        speakers: [Speaker],
+        speakersById(id:ID): Speaker
     }
     type Session{
         id: ID!
@@ -25,5 +27,14 @@ module.exports = gql`
         day: String
         format: String
         track: String @deprecated(reason: "too many sessions that dont fit into a single track."),
-        level: String
-    }`
+        level: String,
+        test: [Speaker],
+        speakers: [Speaker]
+    }
+    type Speaker {
+        id: ID!
+        bio: String
+        name:String
+        sessions: [Session]
+    }
+    `

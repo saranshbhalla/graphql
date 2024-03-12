@@ -3,10 +3,12 @@ const SessionAPI = require('./datasources/sessions');
 
 //this will hold the schema we are defining for the API and the queries allowed on that schema
 const typeDefs = require('./schema.js')
-const resolvers = require('./resolvers.js')
+const resolvers = require('./resolvers.js');
+const SpeakerAPI = require('./datasources/speakers.js');
 
 const dataSources = () => ({
-    sessionAPI: new SessionAPI()
+    sessionAPI: new SessionAPI(),
+    speakerAPI: new SpeakerAPI()
 })
 
 const server = new ApolloServer({typeDefs, resolvers, dataSources});
